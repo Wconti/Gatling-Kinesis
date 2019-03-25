@@ -15,7 +15,6 @@ import scala.collection.JavaConverters._
 class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protocol {
   val kinesisClient = new AmazonKinesisClient()
   kinesisClient.setRegion(Region.getRegion(config.region))
-  checkIsAuthorised(kinesisClient)
 
   def putRecords(data_blob_count : Int):Unit = {
 
@@ -44,16 +43,5 @@ class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protoc
 
   private def getBaseEventJson: String = {
     EventFileLoader.getEventJson(config.eventType)
-  }
-
-  private def checkIsAuthorised(kinesisClient: AmazonKinesisClient) {
-    try {
-      kinesisClient.describeStream(kinesisStream)
-    } catch {
-      case awsEx : AmazonClientException =>
-        println("\nCheck you are logged in to AWS using ADFS (aws-adfs login --profile <ProfileType> --adfs-host <hostName> --region <some-region>)\n")
-        throw awsEx
-      case ex : Exception => throw ex
-    }
   }
 }
