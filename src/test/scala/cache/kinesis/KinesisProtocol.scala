@@ -35,10 +35,11 @@ class KinesisProtocol(config : EventConfig,kinesisStream: String) extends Protoc
   }
 
   private def serialNumberGenerator(jsonData:String): String ={
-    val randomGuid = util.Random.nextInt(1000000)
+    val policyPeriodId = util.Random.nextInt(1000000)
+    val policyId = util.Random.nextInt(1000000)
 
-    jsonData.replace("${guid}", randomGuid.toString)
-                   .replace("${sentAt}", DateTime.now().toString())
+    jsonData.replace("${policyPeriodId}", policyPeriodId.toString)
+                   .replace("${policyId}", policyId.toString)
   }
 
   private def getBaseEventJson: String = {

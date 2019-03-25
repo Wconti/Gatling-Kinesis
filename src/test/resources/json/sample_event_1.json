@@ -1,16 +1,15 @@
-// Sample JSON event which our Kinesis accepts
-// Change it to match your event structure
 {
-  "id": "edf0177b-634c-537d-f019-b99e4fbdb193",
-  "type": "EventType",
-  "attributes": {
-    "triggeredBy": "rex",
-    "version": 1,
-    "payload": {
-      "CDF_GUID": "${guid}"
-    },
-    "source": "gatling-test",
-    "sentAt": "${sentAt}",
-    "sourceEnvironment": "PERF ENV"
-  }
+  "policyPeriodId" : "${policyPeriodId}",
+  "policyNumber" : "0021912601",
+  "policyExtensionId" : "",
+  "businessUnitCd" : "SFAC",
+  "policyId" : "${policyId}",
+  "policyStartDate" : "20190101",
+  "policyEndDate" : "20191231",
+  "policyNewBusinessFlg" : false,
+  "policyRenewalFlg" : true,
+  "productName" : null,
+  "currencyCd" : "Business Pass EH",
+  "productTypeCd" : null,
+  "productId" : ""
 }
